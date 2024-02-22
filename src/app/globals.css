@@ -115,7 +115,7 @@
 
 @media (min-width: 1200px) {
   .embla__slide {
-    flex: 0 0 20%; /* Breakpoint SM slide covers 50% of the viewport */
+    flex: 0 0 19%; /* Breakpoint SM slide covers 50% of the viewport */
   }
 }
 

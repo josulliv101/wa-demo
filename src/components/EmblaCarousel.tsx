@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Profile } from "@/lib/profile";
 
 type PropType = {
-  slides: string[];
   profiles: Array<Profile>;
   options?: EmblaOptionsType;
 };
@@ -23,7 +22,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               className="embla__slide "
               key={id}
               href={`/profile/${id}`}
-              prefetch={true}
+              prefetch={false}
             >
               <div className="">
                 <div className="h-[200px]">
@@ -44,7 +43,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                     // fill={true}
                   />
                 </div>
-                <div className=" ml-4 text-sm text-center text-muted-foreground text-balance px-2 py-4">
+                <div className="relative -left-2 ml-4 text-sm text-center text-muted-foreground text-balance px-2 py-4">
                   {name}
                 </div>
               </div>

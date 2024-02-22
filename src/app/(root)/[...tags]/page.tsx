@@ -17,29 +17,11 @@ const OPTIONS: EmblaOptionsType = {
   containScroll: "trimSnaps",
   slidesToScroll: 2,
   dragFree: false,
-  loop: true,
+  loop: false,
   // breakpoints: {
   //   "(min-width: 1080px)": { active: false },
   // },
 };
-const SLIDE_COUNT = 10;
-const SLIDES = [
-  "https://picsum.photos/id/237/200/300",
-  "https://picsum.photos/200/300",
-  "https://picsum.photos/seed/picsum/200/300",
-  "https://picsum.photos/200/300/",
-  "https://picsum.photos/id/870/200/300",
-  "https://picsum.photos/id/237/200/300",
-  "https://picsum.photos/200/300",
-  "https://picsum.photos/seed/picsum/200/300",
-  "https://picsum.photos/200/300/",
-  "https://picsum.photos/id/870/200/300",
-  "https://picsum.photos/id/237/200/300",
-  "https://picsum.photos/200/300",
-  "https://picsum.photos/seed/picsum/200/300",
-  "https://picsum.photos/200/300/",
-  "https://picsum.photos/id/870/200/300",
-];
 
 export default async function Hub({
   params: { tags: tagsProp = [] },
@@ -74,11 +56,7 @@ export default async function Hub({
               <h2 className="text-lg mb-4 font-semibold">
                 {label.join(" / ")}
               </h2>
-              <EmblaCarousel
-                profiles={profiles}
-                slides={SLIDES}
-                options={OPTIONS}
-              />
+              <EmblaCarousel profiles={profiles} options={OPTIONS} />
               {/* <ScrollArea className="w-full whitespace-nowrap rounded-md border">
               <div className="flex w-max space-x-4 p-4">
                 {profiles.map((profile) => (

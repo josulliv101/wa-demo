@@ -30,7 +30,9 @@ export default function NavMenu({
           <NavigationMenuContent>{panelAbout}</NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="">Cities</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="">
+            Major Cities
+          </NavigationMenuTrigger>
           <NavigationMenuContent>{panelCities}</NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
