@@ -15,9 +15,9 @@ import PageContent from "@/components/PageContent";
 const OPTIONS: EmblaOptionsType = {
   align: "start",
   containScroll: "trimSnaps",
-  slidesToScroll: "auto",
+  slidesToScroll: 2,
   dragFree: false,
-  loop: false,
+  loop: true,
   // breakpoints: {
   //   "(min-width: 1080px)": { active: false },
   // },
