@@ -77,21 +77,9 @@
 
 .embla {
   --slide-spacing: 1rem;
-  --slide-size: 15%;
+  --slide-size: 35%;
   --slide-height: 200px;
   padding: 0rem;
-}
-
-@media (min-width: 750px) {
-  .embla {
-    --slide-size: 12%;
-  }
-}
-
-@media (min-width: 450px) {
-  .embla {
-    --slide-size: 25%;
-  }
 }
 
 .embla__viewport {
@@ -107,7 +95,7 @@
 
 .embla__slide {
   /* flex: 0 0 var(--slide-size); */
-  flex: 0 0 66%; /* Default slide covers 100% of the viewport */
+  flex: 0 0 40%; /* Default slide covers 100% of the viewport */
   min-width: 0;
   padding-left: var(--slide-spacing);
   position: relative;
@@ -128,12 +116,6 @@
 @media (min-width: 1200px) {
   .embla__slide {
     flex: 0 0 20%; /* Breakpoint SM slide covers 50% of the viewport */
-  }
-}
-
-@media (min-width: 1400px) {
-  .embla__slide {
-    flex: 0 0 14%; /* Breakpoint SM slide covers 50% of the viewport */
   }
 }
 
