@@ -1,4 +1,5 @@
 export const config = {
+  org: "blue mushroom",
   logoPath: "/cute-mushroom-blue.png",
   maxNumberOfProfilesInRow: 8,
   totalPaginationProfiles: 20,

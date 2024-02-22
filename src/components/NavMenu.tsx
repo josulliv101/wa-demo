@@ -26,14 +26,14 @@ export default function NavMenu({
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="">About</NavigationMenuTrigger>
-          <NavigationMenuContent>{panelAbout}</NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
           <NavigationMenuTrigger className="">
             Major Cities
           </NavigationMenuTrigger>
           <NavigationMenuContent>{panelCities}</NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="">About</NavigationMenuTrigger>
+          <NavigationMenuContent>{panelAbout}</NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
