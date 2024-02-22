@@ -95,7 +95,7 @@
 
 .embla__slide {
   /* flex: 0 0 var(--slide-size); */
-  flex: 0 0 40%; /* Default slide covers 100% of the viewport */
+  flex: 0 0 50%; /* Default slide covers 100% of the viewport */
   min-width: 0;
   padding-left: var(--slide-spacing);
   position: relative;

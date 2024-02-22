@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="flex flex-wrap shadow-md z-50 w-full bg-blue-500 text-white text-sm py-3 dark:bg-gray-800">
       <nav
-        className="relative container w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between"
+        className="relative container w-full mx-auto px-4 flex items-center justify-between"
         aria-label="Global"
       >
         <div className="flex items-center gap-6">
@@ -33,7 +33,7 @@ export default function Header() {
           panelAbout={<NavMenuAbout />}
           panelCities={<NavMenuCities />}
         ></NavMenu>
-        <span className="text-3xl">🐶</span>
+        <span className="hidden sm:block text-3xl">🐶</span>
       </nav>
     </header>
   );
