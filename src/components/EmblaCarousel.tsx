@@ -22,7 +22,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               className="embla__slide "
               key={id}
               href={`/profile/${id}`}
-              prefetch={false}
+              // prefetch={true}
             >
               <div className="">
                 <div className="h-[200px]">
