@@ -1,14 +1,25 @@
 import { PropsWithChildren, ReactNode } from "react";
+import TabNav from "../TabNav";
+import { cookies } from "next/headers";
 
 export default function Layout({
   children,
   profile,
-  params,
+  params: { tags },
 }: PropsWithChildren<{ params: any; profile: ReactNode }>) {
+  const cookieStore = cookies();
+
+  const tabNavCookie = cookieStore.get("tabnav");
+  const [hub = "all", primaryTag = tabNavCookie || "person", ...tagsRest] =
+    tags || [];
+
   return (
     <>
       {profile}
-      {children}
+      <main className="px-4 py-12 flex flex-col gap-4 container">
+        <TabNav defaultValue={primaryTag} hub={hub} />
+        {children}
+      </main>
     </>
   );
 }

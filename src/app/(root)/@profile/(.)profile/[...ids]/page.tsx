@@ -6,5 +6,5 @@ export default function Page({
   if (!ids?.length) {
     null;
   }
-  return <main>Intercept profile</main>;
+  return <main>{JSON.stringify(ids)}</main>;
 }

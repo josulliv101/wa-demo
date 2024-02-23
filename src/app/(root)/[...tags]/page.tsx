@@ -46,8 +46,7 @@ export default async function Hub({
   const profilesByTag = await Promise.all(fetchPromises);
   // const [{ label, profiles }] = await Promise.all(fetchPromises);
   return (
-    <main className="px-4 py-12 flex flex-col gap-4 container">
-      <TabNav defaultValue={primaryTag} hub={hub} />
+    <>
       <PageContent>
         {/* <h2 className="text-3xl py-8">{hub}</h2> */}
         {profilesByTag.map(({ label, profiles }) => {
@@ -86,6 +85,6 @@ export default async function Hub({
         })}
         <Link href="/about">About...</Link>
       </PageContent>
-    </main>
+    </>
   );
 }

@@ -27,7 +27,7 @@ export default function TabNav({
   const { tags } = useParams();
   const router = useRouter();
   const [cookies, setCookie] = useCookies([TABNAV_COOKIE_NAME]);
-  const primaryTag = tags?.[1];
+  const primaryTag = tags?.[1] || cookies.tabnav;
 
   const valueToUse = isCookieValueValid(primaryTag)
     ? primaryTag
@@ -48,7 +48,7 @@ export default function TabNav({
 
     updateOptimisticActiveTab(id);
     // setTabValue(id);
-    router.push(`/${hub}/${id}`);
+    router.push(`/${tags?.[0] || hub}/${id}`);
   };
 
   useEffect(() => {
