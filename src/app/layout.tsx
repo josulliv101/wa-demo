@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CookiesProvider } from "./TabNavCookie";
 import { StrictMode } from "react";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,11 +23,13 @@ export default function RootLayout({
     <StrictMode>
       <html lang="en">
         <body className={inter.className}>
-          <CookiesProvider defaultSetOptions={{ path: "/" }}>
-            <Header />
-            {children}
-            <Footer />
-          </CookiesProvider>
+          <TooltipProvider>
+            <CookiesProvider defaultSetOptions={{ path: "/" }}>
+              <Header />
+              {children}
+              <Footer />
+            </CookiesProvider>
+          </TooltipProvider>
         </body>
       </html>
     </StrictMode>

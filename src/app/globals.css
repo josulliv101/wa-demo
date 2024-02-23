@@ -125,3 +125,7 @@
   width: 100%;
   object-fit: cover;
 }
+
+main + main {
+  display: none !important;
+}

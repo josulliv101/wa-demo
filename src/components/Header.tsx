@@ -2,8 +2,17 @@ import Link from "next/link";
 import NavMenu from "./NavMenu";
 import NavMenuAbout from "./NavMenuAbout";
 import NavMenuCities from "./NavMenuCities";
-import { config } from "@/lib/config";
+import { config, isRootHub } from "@/lib/config";
 import { Badge } from "./ui/badge";
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipTrigger,
+} from "./ui/tooltip";
+import { Button } from "./ui/button";
+import { PropsWithChildren } from "react";
+import HeaderTitle from "./HeaderTitle";
 
 export default function Header() {
   return (
@@ -12,7 +21,8 @@ export default function Header() {
         className="relative container w-full mx-auto px-4 flex items-center justify-between"
         aria-label="Global"
       >
-        <div className="flex items-center gap-6">
+        <HeaderTitle />
+        <div className="absolute top-1 left-1/2 -translate-x-1/2 flex items-center gap-6">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">{config.org}</span>
             <img
@@ -22,9 +32,6 @@ export default function Header() {
               alt={config.org}
             />
           </Link>
-          <Badge variant={"default"} className="rounded-sm">
-            {config.org}
-          </Badge>
         </div>
         <NavMenu
           panelAbout={<NavMenuAbout />}

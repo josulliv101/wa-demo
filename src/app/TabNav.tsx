@@ -31,7 +31,7 @@ export default function TabNav({
     <>
       <Tabs
         defaultValue={tabValue}
-        className="w-[400px]"
+        className="w-[400px] mb-8"
         onValueChange={setTabValue}
       >
         <TabsList>
