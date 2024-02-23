@@ -8,7 +8,7 @@ export default function PageContent({ children }: PropsWithChildren) {
   return (
     <div className="animate-fade">
       <div
-        className={` transition-all duration-200 ease-in-out ${
+        className={` transition-all duration-150 ease-in ${
           disable ? "opacity-0" : "opacity-100"
         }`}
       >

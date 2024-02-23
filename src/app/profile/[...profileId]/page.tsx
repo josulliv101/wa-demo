@@ -26,7 +26,7 @@ export default async function Profile({
   const { profileId } = params;
   const profile = await getProfile(profileId);
   return (
-    <main className="animate-fade px-4 py-12 container">
+    <main className="animate-fade__ px-4 py-12 container">
       <h2>
         {profile.name} / {profile.oinks}
       </h2>

@@ -207,7 +207,7 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        fade: "fadeIn .3s ease-in-out",
+        fade: "fadeIn .2s ease-in",
         rubberBand: "rubberBand 1s 1",
         rubberBandQuick: "rubberBand .4s 1",
         rubberBandIntro: "rubberBandIntro 5s 1",
