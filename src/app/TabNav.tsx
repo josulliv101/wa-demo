@@ -3,8 +3,10 @@
 import { useCookies } from "react-cookie";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TabNavCookie from "./TabNavCookie";
-import { useState } from "react";
+import { useEffect, useOptimistic, useState } from "react";
 import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import useDisablePageStore from "@/components/useDisablePageStore";
 
 const OPTIONS = ["place", "person"];
 const DEFAULT_VALUE = OPTIONS[0];
@@ -19,31 +21,54 @@ export default function TabNav({
   defaultValue: string;
   hub: string;
 }) {
-  const [cookies, setCookie] = useCookies([TABNAV_COOKIE_NAME]);
+  const disable = useDisablePageStore((state) => state.disable);
+  const enable = useDisablePageStore((state) => state.enable);
 
-  const initialTabValue = isCookieValueValid(defaultValue)
-    ? defaultValue
+  const { tags } = useParams();
+  const router = useRouter();
+  const [cookies, setCookie] = useCookies([TABNAV_COOKIE_NAME]);
+  const primaryTag = tags?.[1];
+
+  const valueToUse = isCookieValueValid(primaryTag)
+    ? primaryTag
     : DEFAULT_VALUE;
 
-  const [tabValue, setTabValue] = useState(initialTabValue);
+  const [optimisticActiveTab, updateOptimisticActiveTab] = useOptimistic<
+    string,
+    string
+  >(valueToUse, (_, newPrimaryTag) => {
+    console.log("newPrimaryTag", newPrimaryTag);
+    return newPrimaryTag;
+  });
+  const isPending = valueToUse !== optimisticActiveTab;
+  //const [tabValue, setTabValue] = useState(initialTabValue);
+
+  const handleTabStateChange = (id: string) => {
+    console.log("handleTabStateChange", id);
+
+    updateOptimisticActiveTab(id);
+    // setTabValue(id);
+    router.push(`/${hub}/${id}`);
+  };
+
+  useEffect(() => {
+    isPending ? disable() : enable();
+  }, [isPending]);
 
   return (
     <>
       <Tabs
-        defaultValue={tabValue}
+        // defaultValue={tabValue}
+        value={optimisticActiveTab}
         className="w-[400px] mb-8"
-        onValueChange={setTabValue}
+        onValueChange={handleTabStateChange}
       >
         <TabsList>
-          <TabsTrigger value="place" asChild>
-            <Link href={`/${hub}/place`}>Place</Link>
-          </TabsTrigger>
-          <TabsTrigger value="person" asChild>
-            <Link href={`/${hub}/person`}>People</Link>
-          </TabsTrigger>
+          <TabsTrigger value="place">Place</TabsTrigger>
+          <TabsTrigger value="person">People</TabsTrigger>
         </TabsList>
       </Tabs>
-      <TabNavCookie activeTab={tabValue} />
+      <TabNavCookie activeTab={optimisticActiveTab} />
     </>
   );
 }

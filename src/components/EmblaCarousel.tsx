@@ -14,7 +14,7 @@ type PropType = {
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { profiles, options } = props;
   return (
-    <div className="embla mb-16 border rounded-sm">
+    <div className="embla mb-16 border rounded-sm bg-white">
       <EmblaViewport options={options}>
         <div className="embla__container pl-4 pt-4">
           {profiles.map(({ id, name, pic }, index) => (
