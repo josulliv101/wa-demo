@@ -17,7 +17,7 @@ export default function Layout({
     <>
       {profile}
       <main className="px-4 py-12 flex flex-col gap-4 container">
-        <TabNav defaultValue={primaryTag} hub={hub} />
+        <TabNav initialValue={primaryTag} hub={hub} />
         {children}
       </main>
     </>

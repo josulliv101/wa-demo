@@ -3,7 +3,7 @@
 import { useCookies } from "react-cookie";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TabNavCookie from "./TabNavCookie";
-import { useEffect, useOptimistic, useState } from "react";
+import { useEffect, useOptimistic, useState, useTransition } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import useDisablePageStore from "@/components/useDisablePageStore";
@@ -15,10 +15,10 @@ export const TABNAV_COOKIE_NAME = "tabnav";
 const isCookieValueValid = (val: string) => OPTIONS.includes(val);
 
 export default function TabNav({
-  defaultValue,
+  initialValue,
   hub,
 }: {
-  defaultValue: string;
+  initialValue: string;
   hub: string;
 }) {
   const disable = useDisablePageStore((state) => state.disable);
@@ -28,6 +28,8 @@ export default function TabNav({
   const router = useRouter();
   const [cookies, setCookie] = useCookies([TABNAV_COOKIE_NAME]);
   const primaryTag = tags?.[1] || cookies.tabnav;
+
+  const [isPending, startTransition] = useTransition();
 
   const valueToUse = isCookieValueValid(primaryTag)
     ? primaryTag
@@ -40,13 +42,13 @@ export default function TabNav({
     console.log("newPrimaryTag", newPrimaryTag);
     return newPrimaryTag;
   });
-  const isPending = valueToUse !== optimisticActiveTab;
+  // const isPending = valueToUse !== optimisticActiveTab;
   //const [tabValue, setTabValue] = useState(initialTabValue);
 
   const handleTabStateChange = (id: string) => {
     console.log("handleTabStateChange", id);
 
-    updateOptimisticActiveTab(id);
+    startTransition(() => updateOptimisticActiveTab(id));
     // setTabValue(id);
     router.push(`/${tags?.[0] || hub}/${id}`);
   };
